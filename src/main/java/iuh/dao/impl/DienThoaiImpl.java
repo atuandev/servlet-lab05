@@ -17,9 +17,8 @@ public class DienThoaiImpl implements DienThoaiDAO {
 
 	@Override
 	public DienThoai save(DienThoai dienThoai) {
-		EntityTransaction transaction = null;
+		EntityTransaction transaction = entityManager.getTransaction();
 		try {
-			transaction = entityManager.getTransaction();
 			transaction.begin();
 			entityManager.persist(dienThoai);
 			transaction.commit();
@@ -37,9 +36,8 @@ public class DienThoaiImpl implements DienThoaiDAO {
 
 	@Override
 	public DienThoai update(DienThoai dienThoai) {
-		EntityTransaction transaction = null;
+		EntityTransaction transaction = entityManager.getTransaction();
 		try {
-			transaction = entityManager.getTransaction();
 			transaction.begin();
 			entityManager.merge(dienThoai);
 			transaction.commit();
@@ -56,9 +54,8 @@ public class DienThoaiImpl implements DienThoaiDAO {
 
 	@Override
 	public boolean delete(int id) {
-		EntityTransaction transaction = null;
+		EntityTransaction transaction = entityManager.getTransaction();
 		try {
-			transaction = entityManager.getTransaction();
 			transaction.begin();
 			DienThoai dienThoai = entityManager.find(DienThoai.class, id);
 			if (dienThoai != null) {

@@ -3,5 +3,5 @@
 	<li aria-current="page" class="hover:bg-gray-200 p-2"><a
 		href="<c:url value="/dien-thoai"/>">Danh sách điện thoại</a></li>
 	<li class="hover:bg-gray-200 p-2"><a
-		href="<c:url value="/dien-thoai?action=new" />">Thêm mới</a></li>
+		href="<c:url value="/dien-thoai?action=form" />">Thêm mới</a></li>
 </ul>

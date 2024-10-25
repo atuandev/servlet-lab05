@@ -21,7 +21,6 @@
 		<%@ include file="../layout/header.jsp"%>
 		<%@ include file="../layout/navbar.jsp"%>
 
-
 		<div class="flex justify-between gap-4 mb-4">
 			<form method="post" action="dien-thoai?action=search" class="flex items-center space-x-2">
 				<input type="text" name="keyword" placeholder="Tìm kiếm điện thoại"
@@ -29,7 +28,7 @@
 				<button type="submit" class="btn btn-primary">Tìm kiếm</button>
 			</form>
 
-			<form method="post" action="dien-thoai" class="flex items-center space-x-2">
+			<form method="post" action="dien-thoai?action=filter" class="flex items-center space-x-2">
 				<select name="nhaCungCap" class="border rounded-sm p-2">
 					<c:forEach var="ncc" items="${listNCC}">
 						<option value="${ncc.maNCC}">${ncc.tenNCC}</option>
@@ -53,30 +52,22 @@
 					</tr>
 				</thead>
 				<tbody>
-					<c:choose>
-						<c:when test="${listDT != null}">
-							<!-- Nếu listDT không null -->
-							<c:forEach var="dt" items="${listDT}">
-								<tr>
-									<td>${dt.maDT}</td>
-									<td>${dt.tenDT}</td>
-									<td>${dt.namSanXuat}</td>
-									<td>${dt.cauHinh}</td>
-									<td>${dt.nhaCungCap.tenNCC}</td>
-									<td><img alt="HinhAnh" src="${pageContext.request.contextPath}/uploads/${dt.hinhAnh}"
-										width="50"></td>
-									<td><a class="text-rose-500 font-semibold"
-										href="dien-thoai?action=delete&id=${dt.maDT}" onclick="return confirm('Bạn có chắc muốn xóa?')">Xóa</a></td>
-								</tr>
-							</c:forEach>
-						</c:when>
-						<c:otherwise>
-							<!-- Nếu listDT null -->
-							<tr>
-								<td colspan="7">Không có dữ liệu.</td>
-							</tr>
-						</c:otherwise>
-					</c:choose>
+					<c:forEach var="dt" items="${listDT}">
+						<tr>
+							<td>${dt.maDT}</td>
+							<td>${dt.tenDT}</td>
+							<td>${dt.namSanXuat}</td>
+							<td>${dt.cauHinh}</td>
+							<td>${dt.nhaCungCap.tenNCC}</td>
+							<td><img alt="HinhAnh" src="${pageContext.request.contextPath}/uploads/${dt.hinhAnh}"
+								class="w-[70px] aspect-square"></td>
+							<td>
+							<a class="text-orange-700 font-semibold" href="dien-thoai?action=form&id=${dt.maDT}">Sửa</a>
+							<span>|</span>
+							<a class="text-rose-500 font-semibold" href="dien-thoai?action=delete&id=${dt.maDT}"
+								onclick="return confirm('Bạn có chắc muốn xóa?')">Xóa</a></td>
+						</tr>
+					</c:forEach>
 				</tbody>
 			</table>
 		</div>

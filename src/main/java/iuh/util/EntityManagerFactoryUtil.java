@@ -9,8 +9,8 @@ public class EntityManagerFactoryUtil {
 	private EntityManager entityManager;
 
 	public EntityManagerFactoryUtil() {
-		entityManageFactory = Persistence.createEntityManagerFactory("21129321_ORM_HIBERNATE_MARIADB");
-		entityManager = entityManageFactory.createEntityManager();
+		this.entityManageFactory = Persistence.createEntityManagerFactory("21129321_ORM_HIBERNATE_MARIADB");
+		this.entityManager = entityManageFactory.createEntityManager();
 	}
 
 	public EntityManager getEnManager() {
